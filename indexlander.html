@@ -805,10 +805,32 @@
 					font-size: 0.8rem;
 				}
 
-				/* DIVIDER */
-				.divider {
+				/* FLOATING PHONE */
+				.floating-phone-btn {
+					display: flex !important;
+				}
+
+				/* CTA SECTION */
+				.cta-section {
 					padding: 2rem 1.5rem;
+				}
+				.cta-section h3 {
+					font-size: 1.5rem;
+					margin-bottom: 0.75rem;
+				}
+				.cta-section p {
+					font-size: 1rem;
+				}
+				.cta-buttons {
+					flex-direction: column;
 					gap: 1rem;
+				}
+				.cta-btn-primary,
+				.cta-btn-secondary {
+					width: 100%;
+					display: block;
+					padding: 0.85rem 2rem;
+					font-size: 0.9rem;
 				}
 			}
 
@@ -914,6 +936,96 @@
 			}
 			.form-status.error {
 				color: #ff6b6b;
+			}
+
+			/* ── FLOATING PHONE BUTTON (MOBILE) ── */
+			.floating-phone-btn {
+				display: none;
+				position: fixed;
+				bottom: 2rem;
+				right: 1.5rem;
+				width: 60px;
+				height: 60px;
+				background: var(--gold);
+				color: var(--charcoal);
+				border: none;
+				border-radius: 50%;
+				font-size: 1.8rem;
+				cursor: pointer;
+				box-shadow: 0 4px 16px rgba(201, 168, 76, 0.4);
+				z-index: 50;
+				transition: all 0.3s ease;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.floating-phone-btn:hover {
+				transform: scale(1.1);
+				box-shadow: 0 6px 20px rgba(201, 168, 76, 0.6);
+			}
+			.floating-phone-btn:active {
+				transform: scale(0.95);
+			}
+
+			/* ── QUICK CTA SECTION ── */
+			.cta-section {
+				padding: 3rem 6rem;
+				background: linear-gradient(
+					135deg,
+					rgba(201, 168, 76, 0.08) 0%,
+					rgba(201, 168, 76, 0.04) 100%
+				);
+				border-top: 1px solid rgba(201, 168, 76, 0.2);
+				border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+				text-align: center;
+			}
+			.cta-section h3 {
+				font-family: "Playfair Display", serif;
+				font-size: 2rem;
+				margin-bottom: 1rem;
+				color: var(--cream);
+			}
+			.cta-section p {
+				font-size: 1.1rem;
+				color: rgba(244, 237, 224, 0.75);
+				margin-bottom: 2rem;
+			}
+			.cta-buttons {
+				display: flex;
+				gap: 1.5rem;
+				justify-content: center;
+				align-items: center;
+				flex-wrap: wrap;
+			}
+			.cta-btn-primary,
+			.cta-btn-secondary {
+				padding: 0.9rem 2.5rem;
+				font-family: "Playfair Display", serif;
+				font-size: 1rem;
+				font-weight: 700;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				text-decoration: none;
+				border: 2px solid var(--gold);
+				border-radius: 4px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+			}
+			.cta-btn-primary {
+				background: var(--gold);
+				color: var(--charcoal);
+			}
+			.cta-btn-primary:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 16px rgba(201, 168, 76, 0.3);
+			}
+			.cta-btn-secondary {
+				background: transparent;
+				color: var(--gold);
+			}
+			.cta-btn-secondary:hover {
+				background: var(--gold);
+				color: var(--charcoal);
 			}
 		</style>
 	</head>
@@ -1147,7 +1259,7 @@
 							Smooth, seamless tapering from skin to length. Low, mid, or high —
 							dialed in exactly where you want it.
 						</p>
-						<div class="service-price">$28</div>
+						<div class="service-price">$</div>
 					</div>
 					<div class="service-bar"></div>
 				</div>
@@ -1168,7 +1280,7 @@
 							Short, clean, and no-nonsense. Clippers all over, finished with a
 							razor-sharp line.
 						</p>
-						<div class="service-price">$20</div>
+						<div class="service-price">$</div>
 					</div>
 					<div class="service-bar"></div>
 				</div>
@@ -1192,7 +1304,7 @@
 							Clean, sharp lines at the hairline, neckline, and temples. Perfect
 							in-between cuts to keep everything looking crisp.
 						</p>
-						<div class="service-price">$15</div>
+						<div class="service-price">$</div>
 					</div>
 					<div class="service-bar"></div>
 				</div>
@@ -1312,6 +1424,19 @@
 			</div>
 		</section>
 
+		<!-- QUICK CTA SECTION -->
+		<section class="cta-section">
+			<h3>Ready to Transform Your Look?</h3>
+			<p>
+				Book your appointment with Blake today and experience the difference a
+				professional cut makes.
+			</p>
+			<div class="cta-buttons">
+				<a href="#booking-form" class="cta-btn-primary">Book Online</a>
+				<a href="tel:7635550199" class="cta-btn-secondary">Call Now</a>
+			</div>
+		</section>
+
 		<!-- BOOKING FORM -->
 		<section class="booking-form-section" id="booking-form">
 			<div class="booking-form-header">
@@ -1326,6 +1451,26 @@
 						id="name"
 						name="name"
 						placeholder="John"
+						required
+					/>
+				</div>
+				<div class="form-group">
+					<label for="email">Email Address</label>
+					<input
+						type="email"
+						id="email"
+						name="email"
+						placeholder="your@email.com"
+						required
+					/>
+				</div>
+				<div class="form-group">
+					<label for="phone">Phone Number</label>
+					<input
+						type="tel"
+						id="phone"
+						name="phone"
+						placeholder="(763) 555-0199"
 						required
 					/>
 				</div>
@@ -1422,6 +1567,14 @@
 			<p>© 2025 Blake's Barbershop</p>
 		</footer>
 
+		<!-- FLOATING PHONE BUTTON (MOBILE) -->
+		<a
+			href="tel:7635550199"
+			class="floating-phone-btn"
+			title="Call Blake's Barbershop"
+			>📞</a
+		>
+
 		<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
 		<script>
 			// Scroll detection for nav background
@@ -1480,10 +1633,14 @@
 				.addEventListener("submit", function (e) {
 					e.preventDefault();
 
-					const name = document.getElementById("name").value;
-					const subject = document.getElementById("subject").value;
+					const name = document.getElementById("name").value.trim();
+					const email = document.getElementById("email").value.trim();
+					const phone = document.getElementById("phone").value.trim();
+					const subject = document.getElementById("subject").value.trim();
 					const datetime = document.getElementById("datetime").value;
-					const description = document.getElementById("description").value;
+					const description = document
+						.getElementById("description")
+						.value.trim();
 					const formStatus = document.getElementById("formStatus");
 					const submitBtn = document.querySelector(".booking-form-submit");
 
@@ -1491,17 +1648,34 @@
 					formStatus.textContent = "";
 					formStatus.className = "form-status";
 
+					// Validation
+					const requiredFields = [];
+					if (!name) requiredFields.push("Name");
+					if (!email) requiredFields.push("Email");
+					if (!phone) requiredFields.push("Phone Number");
+					if (!subject) requiredFields.push("Service Type");
+					if (!datetime) requiredFields.push("Date & Time");
+
+					if (requiredFields.length > 0) {
+						formStatus.textContent = `⚠ Please fill in required fields: ${requiredFields.join(", ")}`;
+						formStatus.classList.add("error");
+						submitBtn.disabled = false;
+						return;
+					}
+
 					// Disable button
 					submitBtn.disabled = true;
 
 					// Prepare email data
 					const templateParams = {
-						to_email: "test@gmail.com",
+						to_email: "vitos123@gmail.com",
 						client_name: name,
+						client_email: email,
+						client_phone: phone,
 						service_type: subject,
 						preferred_date: datetime,
 						notes: description || "No additional notes",
-						message: `New booking request from: ${name}\nService: ${subject}\nDate & Time: ${datetime}\nNotes: ${description}`,
+						message: `New booking request from: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${subject}\nDate & Time: ${datetime}\nNotes: ${description}`,
 					};
 
 					// Send email using EmailJS
@@ -1511,7 +1685,9 @@
 							function (response) {
 								console.log("SUCCESS!", response.status, response.text);
 								formStatus.textContent =
-									"Request sent successfully! Blake will contact you soon.";
+									"✓ Request submitted successfully! Blake will contact you soon at " +
+									phone +
+									".";
 								formStatus.classList.add("success");
 
 								// Reset form
@@ -1520,13 +1696,14 @@
 								// Show success for 5 seconds
 								setTimeout(() => {
 									formStatus.textContent = "";
+									formStatus.className = "form-status";
 									submitBtn.disabled = false;
 								}, 5000);
 							},
 							function (error) {
 								console.log("FAILED...", error);
 								formStatus.textContent =
-									"Error sending request. Please try calling (763) 555-0199.";
+									"✗ Error sending request. Please try calling (763) 555-0199 or check your email field.";
 								formStatus.classList.add("error");
 								submitBtn.disabled = false;
 							},
